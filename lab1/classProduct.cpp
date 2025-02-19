@@ -14,14 +14,14 @@ public:
     Product(int price) : price(price) {}
 };
 
-class ProductValidator
+class IProductValidator
 {
 public:
     virtual bool IsValid(const Product& product) const = 0;
-    virtual ~ProductValidator() = default;
+    virtual ~IProductValidator() = default;
 };
 
-class DefaultProductValidator : public ProductValidator // Обычный валидатор продукта
+class DefaultProductValidator : public IProductValidator // Обычный валидатор продукта
 {
 public:
     bool IsValid(const Product& product) const override
@@ -30,7 +30,7 @@ public:
     }
 };
 
-class CustomerServiceProductValidator : public ProductValidator // Валидатор для CustomerService
+class CustomerServiceProductValidator : public IProductValidator // Валидатор для CustomerService
 {
 public:
     bool IsValid(const Product& product) const override
@@ -39,7 +39,7 @@ public:
     }
 };
 
-bool ValidateProduct(const Product& product, const ProductValidator& validator) // Функция проверки через конкретный валидатор
+bool ValidateProduct(const Product& product, const IProductValidator& validator) // Функция проверки через конкретный валидатор
 {
     return validator.IsValid(product);
 }
