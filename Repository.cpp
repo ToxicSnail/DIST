@@ -32,10 +32,11 @@ public:
     {
         if (typeid(*entity) != typeid(AccountEntity)) 
         {
-            std::cout << "Error: trying to save a non-AccountEntity in the AccountRepository" << std::endl;
+            std::cout << "//" << typeid( *entity ).name();
+            std::cout << " Error: trying to save a non-AccountEntity in the AccountRepository" << std::endl;
             return;
         }
-        std::cout << "Saving AccountEntity..." << std::endl;
+        std::cout << " Saving AccountEntity..." << std::endl;
     }
 };
 
@@ -46,10 +47,11 @@ public:
     {
         if (typeid(*entity) != typeid(RoleEntity)) 
         {
-            std::cout << "Error: trying to save a non-RoleRepository in the RoleRepository" << std::endl;
+            std::cout << "//" << typeid( *entity ).name();
+            std::cout << " Error: trying to save a non-RoleRepository in the RoleRepository" << std::endl;
             return;
         }
-        std::cout << "Saving RoleEntity..." << std::endl;
+        std::cout << " Saving RoleEntity..." << std::endl;
     }
 };
 
